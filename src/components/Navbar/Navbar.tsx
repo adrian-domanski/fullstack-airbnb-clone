@@ -5,6 +5,7 @@ import Logo from './Logo/Logo'
 
 import * as Styled from './Navbar.styles'
 import Search from './Search/Search'
+import UserMenu from './UserMenu/UserMenu'
 
 // import Categories from "./Categories";
 // import Container from "../Container";
@@ -23,7 +24,7 @@ const Navbar: React.FC<NavbarProps> = () => {
           <Styled.ContainerContent>
             <Logo />
             <Search />
-            {/* <UserMenu currentUser={currentUser} /> */}
+            <UserMenu />
           </Styled.ContainerContent>
         </Container>
       </Styled.Content>
