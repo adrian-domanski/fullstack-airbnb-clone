@@ -5,6 +5,8 @@ import { FcGoogle } from 'react-icons/fc'
 import useRegisterModal from '../../../hooks/useRegisterModal'
 import { FieldValues, useForm } from 'react-hook-form'
 import axios from 'axios'
+import Heading from '../../Heading/Heading'
+import Input from '../../Inputs/Input/Input'
 
 const RegisterModal = () => {
   const registerModal = useRegisterModal()
@@ -38,6 +40,20 @@ const RegisterModal = () => {
       })
   }
 
+  const modalBodyContent = (
+    <div tw="flex flex-col gap-4">
+      <Heading title="Welcome to Airbnb" subtitle="Create an account" />
+      <Input
+        id="email"
+        label="Email"
+        disabled={isLoading}
+        register={register}
+        errors={errors}
+        required
+      />
+    </div>
+  )
+
   return (
     <Modal
       disabled={isLoading}
@@ -46,6 +62,7 @@ const RegisterModal = () => {
       actionLabel="Continue"
       onClose={registerModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
+      body={modalBodyContent}
     />
   )
 }
