@@ -1,6 +1,9 @@
 import React from 'react'
 import 'twin.macro'
+import Navbar from '../components/Navbar/Navbar'
 
-const IndexPage = () => <div tw="bg-red-300">Hello world</div>
+const IndexPage = () => {
+  return <Navbar />
+}
 
 export default IndexPage
