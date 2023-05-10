@@ -1,16 +1,9 @@
-// import { SafeUser } from "@/app/types";
-
 import Container from '../Container/Container'
 import Logo from './Logo/Logo'
-
-import * as Styled from './Navbar.styles'
 import Search from './Search/Search'
 import UserMenu from './UserMenu/UserMenu'
 
-// import Categories from "./Categories";
-// import Container from "../Container";
-// import Search from "./Search";
-// import UserMenu from "./UserMenu";
+import * as Styled from './Navbar.styles'
 
 interface NavbarProps {
   // currentUser?: SafeUser | null;
@@ -28,7 +21,6 @@ const Navbar: React.FC<NavbarProps> = () => {
           </Styled.ContainerContent>
         </Container>
       </Styled.Content>
-      {/* <Categories /> */}
     </Styled.Nav>
   )
 }

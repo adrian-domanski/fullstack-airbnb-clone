@@ -5,6 +5,7 @@ import { AiOutlineMenu } from 'react-icons/ai'
 import * as Styled from './UserMenu.styles'
 import Avatar from '../Avatar/Avatar'
 import MenuItem from '../MenuItem/MenuItem'
+import useRegisterModal from '../../../hooks/useRegisterModal'
 
 interface UserMenuProps {
   currentUser?: any // change that
@@ -12,6 +13,7 @@ interface UserMenuProps {
 
 const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
   const router = useRouter()
+  const registerModal = useRegisterModal()
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -59,14 +61,8 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                 />
               </> */}
 
-            {/* <MenuItem 
-                  label="Login" 
-                  onClick={loginModal.onOpen}
-                />
-                <MenuItem 
-                  label="Sign up" 
-                  onClick={registerModal.onOpen}
-                /> */}
+            {/* <MenuItem label="Login" onClick={loginModal.onOpen} /> */}
+            <MenuItem label="Sign up" onClick={registerModal.onOpen} />
           </Styled.MenuContent>
         </Styled.MenuWrapper>
       )}
