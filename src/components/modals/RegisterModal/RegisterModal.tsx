@@ -7,6 +7,10 @@ import { FieldValues, useForm } from 'react-hook-form'
 import axios from 'axios'
 import Heading from '../../Heading/Heading'
 import Input from '../../Inputs/Input/Input'
+import { toast } from 'react-hot-toast'
+import Button from '../../Button/Button'
+
+import * as Styled from './RegisterModal.styles'
 
 const RegisterModal = () => {
   const registerModal = useRegisterModal()
@@ -32,8 +36,8 @@ const RegisterModal = () => {
       .then(() => {
         registerModal.onClose()
       })
-      .catch(error => {
-        console.log(error)
+      .catch(() => {
+        toast.error('Someting went wrong!')
       })
       .finally(() => {
         setIsLoading(false)
@@ -41,7 +45,7 @@ const RegisterModal = () => {
   }
 
   const modalBodyContent = (
-    <div tw="flex flex-col gap-4">
+    <Styled.BodyContainer>
       <Heading title="Welcome to Airbnb" subtitle="Create an account" />
       <Input
         id="email"
@@ -51,7 +55,48 @@ const RegisterModal = () => {
         errors={errors}
         required
       />
-    </div>
+      <Input
+        id="name"
+        label="Name"
+        disabled={isLoading}
+        register={register}
+        errors={errors}
+        required
+      />
+      <Input
+        id="password"
+        type="password"
+        label="Password"
+        disabled={isLoading}
+        register={register}
+        errors={errors}
+        required
+      />
+    </Styled.BodyContainer>
+  )
+
+  const footerContent = (
+    <Styled.FooterContainer>
+      <hr />
+      <Button
+        outline
+        label="Continue with Google"
+        icon={<FcGoogle />}
+        onClick={() => {}}
+      />
+      <Button
+        outline
+        label="Continue with Github"
+        icon={<AiFillGithub />}
+        onClick={() => {}}
+      />
+      <Styled.CTAWrapper>
+        <div>Already have an account?</div>
+        <Styled.CTALogin onClick={registerModal.onClose}>
+          Log in
+        </Styled.CTALogin>
+      </Styled.CTAWrapper>
+    </Styled.FooterContainer>
   )
 
   return (
@@ -63,6 +108,7 @@ const RegisterModal = () => {
       onClose={registerModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
       body={modalBodyContent}
+      footer={footerContent}
     />
   )
 }

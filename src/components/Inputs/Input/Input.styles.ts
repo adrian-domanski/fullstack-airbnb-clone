@@ -1,7 +1,7 @@
 import { BiDollar } from 'react-icons/bi'
 import tw, { styled } from 'twin.macro'
 
-export const Wrapper = tw.div`w-full relative`
+export const Wrapper = tw.div`w-full relative my-2.5`
 
 export const DollarIcon = tw(BiDollar)`
 	text-neutral-700

@@ -1,4 +1,4 @@
-import { IconType } from 'react-icons'
+import 'twin.macro'
 
 import * as Styled from './Button.styles'
 
@@ -8,7 +8,7 @@ interface ButtonProps {
   disabled?: boolean
   outline?: boolean
   small?: boolean
-  icon?: IconType
+  icon?: JSX.Element
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -17,7 +17,7 @@ const Button: React.FC<ButtonProps> = ({
   disabled,
   outline,
   small,
-  icon: Icon,
+  icon,
 }) => {
   return (
     <Styled.Wrapper
@@ -26,7 +26,7 @@ const Button: React.FC<ButtonProps> = ({
       disabled={disabled}
       onClick={onClick}
     >
-      {Icon && <Icon size={24} tw="absolute left-4 top-3" />}
+      {icon && <Styled.IconWrapper>{icon}</Styled.IconWrapper>}
       {label}
     </Styled.Wrapper>
   )

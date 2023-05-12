@@ -19,3 +19,9 @@ export const Wrapper = styled.button<{ outline?: boolean; small?: boolean }>(
       : tw`text-base py-3 font-semibold border-2`,
   ],
 )
+
+export const IconWrapper = styled.div`
+  svg {
+    ${tw`absolute left-4 top-4`}
+  }
+`
