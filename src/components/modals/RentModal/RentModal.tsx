@@ -9,9 +9,10 @@ import Heading from '../../Heading/Heading'
 import Input from '../../Inputs/Input/Input'
 import Modal from '../Modal/Modal'
 import { categories } from '../../Navbar/Categories/Categories'
+import CategoryInput from '../../Inputs/CategoryInput/CategoryInput'
+import CountrySelect from '../../Inputs/CountrySelect/CountrySelect'
 
 import * as Styled from './RentModal.styles'
-import CategoryInput from '../../Inputs/CategoryInput/CategoryInput'
 
 enum STEPS {
   CATEGORY = 0,
@@ -56,6 +57,11 @@ const RentModal = () => {
   const roomCount = watch('roomCount')
   const bathroomCount = watch('bathroomCount')
   const imageSrc = watch('imageSrc')
+
+  const Map = useMemo(
+    () => dynamic(() => import('../../Map/Map'), { ssr: false }),
+    [location],
+  )
 
   const setCustomValue = (id: string, value: any) => {
     setValue(id, value, {
@@ -135,11 +141,11 @@ const RentModal = () => {
           title="Where is your place located?"
           subtitle="Help guests find you!"
         />
-        {/* <CountrySelect 
-          value={location} 
-          onChange={(value) => setCustomValue('location', value)} 
-        /> */}
-        {/* <Map center={location?.latlng} /> */}
+        <CountrySelect
+          value={location}
+          onChange={value => setCustomValue('location', value)}
+        />
+        <Map center={location?.latlng} />
       </Styled.BodyContent>
     )
   }
