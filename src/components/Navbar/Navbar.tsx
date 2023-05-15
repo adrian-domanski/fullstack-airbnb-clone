@@ -4,12 +4,14 @@ import Search from './Search/Search'
 import UserMenu from './UserMenu/UserMenu'
 
 import * as Styled from './Navbar.styles'
+import { SafeUser } from '../../../types/typings'
+import Categories from './Categories/Categories'
 
 interface NavbarProps {
-  // currentUser?: SafeUser | null;
+  currentUser?: SafeUser | null
 }
 
-const Navbar: React.FC<NavbarProps> = () => {
+const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
   return (
     <Styled.Nav>
       <Styled.Content>
@@ -17,10 +19,11 @@ const Navbar: React.FC<NavbarProps> = () => {
           <Styled.ContainerContent>
             <Logo />
             <Search />
-            <UserMenu />
+            <UserMenu currentUser={currentUser} />
           </Styled.ContainerContent>
         </Container>
       </Styled.Content>
+      <Categories />
     </Styled.Nav>
   )
 }

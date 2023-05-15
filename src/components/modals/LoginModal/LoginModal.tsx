@@ -3,19 +3,21 @@ import Modal from '../Modal/Modal'
 import { AiFillGithub } from 'react-icons/ai'
 import { FcGoogle } from 'react-icons/fc'
 import useRegisterModal from '../../../hooks/useRegisterModal'
+import useLoginModal from '../../../hooks/useLoginModal'
 import { FieldValues, useForm } from 'react-hook-form'
-import axios from 'axios'
+import { signIn } from 'next-auth/react'
 import Heading from '../../Heading/Heading'
 import Input from '../../Inputs/Input/Input'
 import { toast } from 'react-hot-toast'
 import Button from '../../Button/Button'
 
-import * as Styled from './RegisterModal.styles'
-import { signIn } from 'next-auth/react'
+import * as Styled from './LoginModal.styles'
 
-const RegisterModal = () => {
-  const registerModal = useRegisterModal()
+const LoginModal = () => {
   const [isLoading, setIsLoading] = useState(false)
+
+  const registerModal = useRegisterModal()
+  const loginModal = useLoginModal()
 
   const {
     register,
@@ -23,7 +25,6 @@ const RegisterModal = () => {
     formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
-      name: '',
       email: '',
       password: '',
     },
@@ -32,33 +33,29 @@ const RegisterModal = () => {
   const onSubmit = async (data: FieldValues) => {
     setIsLoading(true)
 
-    axios
-      .post('/api/register', data)
-      .then(() => {
-        registerModal.onClose()
-      })
-      .catch(() => {
-        toast.error('Someting went wrong!')
-      })
-      .finally(() => {
-        setIsLoading(false)
-      })
+    signIn('credentials', {
+      ...data,
+      redirect: false,
+    }).then(callback => {
+      setIsLoading(false)
+
+      if (callback?.ok) {
+        toast.success('Logged in successfully!')
+        loginModal.onClose()
+      }
+
+      if (callback?.error) {
+        toast.error(callback.error)
+      }
+    })
   }
 
   const modalBodyContent = (
     <Styled.BodyContainer>
-      <Heading title="Welcome to Airbnb" subtitle="Create an account" />
+      <Heading title="Welcome back" subtitle="Login to your account!" />
       <Input
         id="email"
         label="Email"
-        disabled={isLoading}
-        register={register}
-        errors={errors}
-        required
-      />
-      <Input
-        id="name"
-        label="Name"
         disabled={isLoading}
         register={register}
         errors={errors}
@@ -93,9 +90,7 @@ const RegisterModal = () => {
       />
       <Styled.CTAWrapper>
         <div>Already have an account?</div>
-        <Styled.CTALogin onClick={registerModal.onClose}>
-          Log in
-        </Styled.CTALogin>
+        <Styled.CTALogin onClick={loginModal.onClose}>Log in</Styled.CTALogin>
       </Styled.CTAWrapper>
     </Styled.FooterContainer>
   )
@@ -103,10 +98,10 @@ const RegisterModal = () => {
   return (
     <Modal
       disabled={isLoading}
-      isOpen={registerModal.isOpen}
-      title="Register"
+      isOpen={loginModal.isOpen}
+      title="Login"
       actionLabel="Continue"
-      onClose={registerModal.onClose}
+      onClose={loginModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
       body={modalBodyContent}
       footer={footerContent}
@@ -114,4 +109,4 @@ const RegisterModal = () => {
   )
 }
 
-export default RegisterModal
+export default LoginModal
