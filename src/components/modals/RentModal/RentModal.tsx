@@ -13,6 +13,7 @@ import CategoryInput from '../../Inputs/CategoryInput/CategoryInput'
 import CountrySelect from '../../Inputs/CountrySelect/CountrySelect'
 
 import * as Styled from './RentModal.styles'
+import Counter from '../../Inputs/Counter/Counter'
 
 enum STEPS {
   CATEGORY = 0,
@@ -155,28 +156,28 @@ const RentModal = () => {
       <Styled.BodyContent>
         <Heading
           title="Share some basics about your place"
-          subtitle="What amenitis do you have?"
+          subtitle="What amenities do you have?"
         />
-        {/* <Counter 
-          onChange={(value) => setCustomValue('guestCount', value)}
+        <Counter
+          onChange={value => setCustomValue('guestCount', value)}
           value={guestCount}
-          title="Guests" 
+          title="Guests"
           subtitle="How many guests do you allow?"
-        /> */}
+        />
         <hr />
-        {/* <Counter 
-          onChange={(value) => setCustomValue('roomCount', value)}
+        <Counter
+          onChange={value => setCustomValue('roomCount', value)}
           value={roomCount}
-          title="Rooms" 
+          title="Rooms"
           subtitle="How many rooms do you have?"
-        /> */}
+        />
         <hr />
-        {/* <Counter 
-          onChange={(value) => setCustomValue('bathroomCount', value)}
+        <Counter
+          onChange={value => setCustomValue('bathroomCount', value)}
           value={bathroomCount}
-          title="Bathrooms" 
+          title="Bathrooms"
           subtitle="How many bathrooms do you have?"
-        /> */}
+        />
       </Styled.BodyContent>
     )
   }
