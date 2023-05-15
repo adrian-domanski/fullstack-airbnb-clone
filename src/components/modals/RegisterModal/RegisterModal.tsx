@@ -9,12 +9,15 @@ import Heading from '../../Heading/Heading'
 import Input from '../../Inputs/Input/Input'
 import { toast } from 'react-hot-toast'
 import Button from '../../Button/Button'
+import { signIn } from 'next-auth/react'
+import useLoginModal from '../../../hooks/useLoginModal'
 
 import * as Styled from './RegisterModal.styles'
-import { signIn } from 'next-auth/react'
 
 const RegisterModal = () => {
+  const loginModal = useLoginModal()
   const registerModal = useRegisterModal()
+
   const [isLoading, setIsLoading] = useState(false)
 
   const {
@@ -43,6 +46,11 @@ const RegisterModal = () => {
       .finally(() => {
         setIsLoading(false)
       })
+  }
+
+  const toggle = () => {
+    registerModal.onClose()
+    loginModal.onOpen()
   }
 
   const modalBodyContent = (
@@ -93,9 +101,7 @@ const RegisterModal = () => {
       />
       <Styled.CTAWrapper>
         <div>Already have an account?</div>
-        <Styled.CTALogin onClick={registerModal.onClose}>
-          Log in
-        </Styled.CTALogin>
+        <Styled.CTALogin onClick={toggle}>Log in</Styled.CTALogin>
       </Styled.CTAWrapper>
     </Styled.FooterContainer>
   )

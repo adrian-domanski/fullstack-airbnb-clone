@@ -9,12 +9,14 @@ import { signIn } from 'next-auth/react'
 import Heading from '../../Heading/Heading'
 import Input from '../../Inputs/Input/Input'
 import { toast } from 'react-hot-toast'
+import { useRouter } from 'next/navigation'
 import Button from '../../Button/Button'
 
 import * as Styled from './LoginModal.styles'
 
 const LoginModal = () => {
   const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter()
 
   const registerModal = useRegisterModal()
   const loginModal = useLoginModal()
@@ -42,12 +44,17 @@ const LoginModal = () => {
       if (callback?.ok) {
         toast.success('Logged in successfully!')
         loginModal.onClose()
+        router.refresh()
       }
 
       if (callback?.error) {
         toast.error(callback.error)
       }
     })
+  }
+  const toggle = () => {
+    loginModal.onClose()
+    registerModal.onOpen()
   }
 
   const modalBodyContent = (
@@ -89,8 +96,8 @@ const LoginModal = () => {
         onClick={() => signIn('github')}
       />
       <Styled.CTAWrapper>
-        <div>Already have an account?</div>
-        <Styled.CTALogin onClick={loginModal.onClose}>Log in</Styled.CTALogin>
+        <div>Fist time using Airbnb?</div>
+        <Styled.CTALogin onClick={toggle}>Create an account</Styled.CTALogin>
       </Styled.CTAWrapper>
     </Styled.FooterContainer>
   )

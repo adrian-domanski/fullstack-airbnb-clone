@@ -5,6 +5,7 @@ import LoginModal from '../components/modals/LoginModal/LoginModal'
 import getCurrentUser from '../actions/getCurrentUser'
 import { GetServerSideProps, NextApiRequest, NextApiResponse } from 'next'
 import { SafeUser } from '../../types/typings'
+import RentModal from '../components/modals/RentModal/RentModal'
 
 interface HomePageProps {
   currentUser: SafeUser | null
@@ -16,6 +17,7 @@ const HomePage: React.FC<HomePageProps> = ({ currentUser }) => {
       <Navbar currentUser={currentUser} />
       <RegisterModal />
       <LoginModal />
+      <RentModal />
     </>
   )
 }
