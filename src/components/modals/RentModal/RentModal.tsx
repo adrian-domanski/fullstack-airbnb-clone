@@ -14,6 +14,7 @@ import CountrySelect from '../../Inputs/CountrySelect/CountrySelect'
 
 import * as Styled from './RentModal.styles'
 import Counter from '../../Inputs/Counter/Counter'
+import ImageUpload from '../../Inputs/ImageUpload/ImageUpload'
 
 enum STEPS {
   CATEGORY = 0,
@@ -189,10 +190,10 @@ const RentModal = () => {
           title="Add a photo of your place"
           subtitle="Show guests what your place looks like!"
         />
-        {/* <ImageUpload
-          onChange={(value) => setCustomValue('imageSrc', value)}
+        <ImageUpload
+          onChange={value => setCustomValue('imageSrc', value)}
           value={imageSrc}
-        /> */}
+        />
       </Styled.BodyContent>
     )
   }
