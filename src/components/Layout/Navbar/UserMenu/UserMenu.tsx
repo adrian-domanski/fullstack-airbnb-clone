@@ -1,15 +1,15 @@
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { useCallback, useState } from 'react'
 import { AiOutlineMenu } from 'react-icons/ai'
-
-import * as Styled from './UserMenu.styles'
 import Avatar from '../Avatar/Avatar'
 import MenuItem from '../MenuItem/MenuItem'
-import useRegisterModal from '../../../hooks/useRegisterModal'
-import useLoginModal from '../../../hooks/useLoginModal'
-import { SafeUser } from '../../../../types/typings'
+import useRegisterModal from '../../../../hooks/useRegisterModal'
+import useLoginModal from '../../../../hooks/useLoginModal'
+import { SafeUser } from '../../../../../types/typings'
 import { signOut } from 'next-auth/react'
-import useRentModal from '../../../hooks/useRentModal'
+import useRentModal from '../../../../hooks/useRentModal'
+
+import * as Styled from './UserMenu.styles'
 
 interface UserMenuProps {
   currentUser?: SafeUser | null // change that

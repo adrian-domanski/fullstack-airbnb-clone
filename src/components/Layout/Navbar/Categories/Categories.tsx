@@ -14,8 +14,8 @@ import { FaSkiing } from 'react-icons/fa'
 import { BsSnow } from 'react-icons/bs'
 import { IoDiamond } from 'react-icons/io5'
 import { MdOutlineVilla } from 'react-icons/md'
-import Container from '../../Container/Container'
-import CategoryBox from '../../CategoryBox/CategoryBox'
+import Container from '../../../Container/Container'
+import CategoryBox from '../../../CategoryBox/CategoryBox'
 
 import * as Styled from './Categories.styles'
 

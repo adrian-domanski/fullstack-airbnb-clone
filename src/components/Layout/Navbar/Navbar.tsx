@@ -1,10 +1,10 @@
-import Container from '../Container/Container'
+import Container from '../../Container/Container'
 import Logo from './Logo/Logo'
 import Search from './Search/Search'
 import UserMenu from './UserMenu/UserMenu'
 
 import * as Styled from './Navbar.styles'
-import { SafeUser } from '../../../types/typings'
+import { SafeUser } from '../../../../types/typings'
 import Categories from './Categories/Categories'
 
 interface NavbarProps {

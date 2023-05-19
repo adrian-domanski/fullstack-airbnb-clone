@@ -1,24 +1,21 @@
 import React from 'react'
-import Navbar from '../components/Navbar/Navbar'
-import RegisterModal from '../components/modals/RegisterModal/RegisterModal'
-import LoginModal from '../components/modals/LoginModal/LoginModal'
 import getCurrentUser from '../actions/getCurrentUser'
 import { GetServerSideProps, NextApiRequest, NextApiResponse } from 'next'
-import { SafeUser } from '../../types/typings'
-import RentModal from '../components/modals/RentModal/RentModal'
+import { SafeListing, SafeUser } from '../../types/typings'
+import Layout from '../components/Layout/Layout'
+import Listings from '../containers/Listings/Listings'
+import getListings from '../actions/getListings'
 
 interface HomePageProps {
   currentUser: SafeUser | null
+  listings: SafeListing[]
 }
 
-const HomePage: React.FC<HomePageProps> = ({ currentUser }) => {
+export default function Home({ currentUser, listings }: HomePageProps) {
   return (
-    <>
-      <Navbar currentUser={currentUser} />
-      <RegisterModal />
-      <LoginModal />
-      <RentModal />
-    </>
+    <Layout currentUser={currentUser}>
+      <Listings listings={listings} currentUser={currentUser} />
+    </Layout>
   )
 }
 
@@ -30,11 +27,12 @@ export const getServerSideProps: GetServerSideProps<
     ctx.res as NextApiResponse,
   )
 
+  const listings: SafeListing[] = await getListings()
+
   return {
     props: {
       currentUser,
+      listings,
     },
   }
 }
-
-export default HomePage

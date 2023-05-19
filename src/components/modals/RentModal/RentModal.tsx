@@ -8,7 +8,7 @@ import useRentModal from '../../../hooks/useRentModal'
 import Heading from '../../Heading/Heading'
 import Input from '../../Inputs/Input/Input'
 import Modal from '../Modal/Modal'
-import { categories } from '../../Navbar/Categories/Categories'
+import { categories } from '../../Layout/Navbar/Categories/Categories'
 import CategoryInput from '../../Inputs/CategoryInput/CategoryInput'
 import CountrySelect from '../../Inputs/CountrySelect/CountrySelect'
 
