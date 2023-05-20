@@ -9,7 +9,7 @@ import { signIn } from 'next-auth/react'
 import Heading from '../../Heading/Heading'
 import Input from '../../Inputs/Input/Input'
 import { toast } from 'react-hot-toast'
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/router'
 import Button from '../../Button/Button'
 
 import * as Styled from './LoginModal.styles'
@@ -44,7 +44,7 @@ const LoginModal = () => {
       if (callback?.ok) {
         toast.success('Logged in successfully!')
         loginModal.onClose()
-        router.refresh()
+        router.push(router.asPath)
       }
 
       if (callback?.error) {

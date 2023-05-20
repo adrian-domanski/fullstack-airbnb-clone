@@ -2,7 +2,7 @@ import axios from 'axios'
 import { toast } from 'react-hot-toast'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import dynamic from 'next/dynamic'
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/router'
 import { useMemo, useState } from 'react'
 import useRentModal from '../../../hooks/useRentModal'
 import Heading from '../../Heading/Heading'
@@ -86,7 +86,7 @@ const RentModal = () => {
       .post('/api/listings', data)
       .then(() => {
         toast.success('Listing created!')
-        router.refresh()
+        router.push(asPath)
         reset()
         setStep(STEPS.CATEGORY)
         rentModal.onClose()
