@@ -1,7 +1,7 @@
 import { toast } from 'react-hot-toast'
 import axios from 'axios'
 import { useCallback, useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/router'
 import { SafeReservation, SafeUser } from '../../../types/typings'
 import Heading from '../../components/Heading/Heading'
 import Container from '../../components/Container/Container'
@@ -29,10 +29,10 @@ const TripsClient: React.FC<TripsClientProps> = ({
         .delete(`/api/reservations/${id}`)
         .then(() => {
           toast.success('Reservation cancelled')
-          router.refresh()
+          router.push(router.asPath)
         })
-        .catch(error => {
-          toast.error(error?.response?.data?.error)
+        .catch(() => {
+          toast.error("Couldn't cancel reservation")
         })
         .finally(() => {
           setDeletingId('')

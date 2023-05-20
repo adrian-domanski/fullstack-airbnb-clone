@@ -1,6 +1,6 @@
-import prisma from '../../libs/prismadb'
+import prisma from '../../../libs/prismadb'
 import { NextApiRequest, NextApiResponse } from 'next'
-import getCurrentUser from '../../actions/getCurrentUser'
+import getCurrentUser from '../../../actions/getCurrentUser'
 
 export default async function handler(
   req: NextApiRequest,
