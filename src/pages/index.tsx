@@ -4,7 +4,7 @@ import { GetServerSideProps, NextApiRequest, NextApiResponse } from 'next'
 import { SafeListing, SafeUser } from '../../types/typings'
 import Layout from '../components/Layout/Layout'
 import Listings from '../containers/Listings/Listings'
-import getListings from '../actions/getListings'
+import getListings, { IListingsParams } from '../actions/getListings'
 
 interface HomePageProps {
   currentUser: SafeUser | null
@@ -27,7 +27,9 @@ export const getServerSideProps: GetServerSideProps<
     ctx.res as NextApiResponse,
   )
 
-  const listings: SafeListing[] = await getListings()
+  const searchParams = ctx.query as IListingsParams
+
+  const listings: SafeListing[] = await getListings(searchParams)
 
   return {
     props: {
