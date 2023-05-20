@@ -1,7 +1,7 @@
 import tw from 'twin.macro'
 
-export const ListingsWrapper = tw.div`
-	pt-24
+export const Wrapper = tw.div`
+	mt-10
 	grid 
 	grid-cols-1 
 	sm:grid-cols-2 

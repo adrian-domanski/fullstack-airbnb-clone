@@ -3,7 +3,6 @@ import tw from 'twin.macro'
 export const Wrapper = tw.div`
 	max-w-screen-lg 
 	mx-auto
-	pt-28
 	pb-10
 `
 
