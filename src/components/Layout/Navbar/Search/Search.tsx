@@ -1,10 +1,13 @@
 import { BiSearch } from 'react-icons/bi'
 
 import * as Styled from './Search.styles'
+import useSearchModal from '../../../../hooks/useSearchModal'
 
 const Search = () => {
+  const searchModal = useSearchModal()
+
   return (
-    <Styled.Wrapper>
+    <Styled.Wrapper onClick={searchModal.onOpen}>
       <Styled.Content>
         <Styled.LocationLabel>Location Label</Styled.LocationLabel>
         <Styled.DurationLabel>Duration Label</Styled.DurationLabel>
