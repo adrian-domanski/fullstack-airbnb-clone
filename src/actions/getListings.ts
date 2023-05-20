@@ -13,6 +13,6 @@ export default async function getListings() {
       createdAt: listing.createdAt.toISOString(),
     }))
   } catch (error: any) {
-    throw new Error(error)
+    throw new Error("Couldn't get listings")
   }
 }

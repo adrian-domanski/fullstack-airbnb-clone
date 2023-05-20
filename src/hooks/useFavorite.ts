@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/router'
 import { useCallback, useMemo } from 'react'
 import { toast } from 'react-hot-toast'
 
@@ -17,7 +17,7 @@ const useFavorite = ({ listingId, currentUser }: IUseFavorite) => {
   const loginModal = useLoginModal()
 
   const hasFavorited = useMemo(() => {
-    const list = currentUser?.favoritesIds || []
+    const list = currentUser?.favoriteIds || []
 
     return list.includes(listingId)
   }, [currentUser, listingId])
@@ -40,7 +40,7 @@ const useFavorite = ({ listingId, currentUser }: IUseFavorite) => {
         }
 
         await request()
-        router.refresh()
+        router.push(router.asPath)
         toast.success('Success')
       } catch (error) {
         toast.error('Something went wrong.')
