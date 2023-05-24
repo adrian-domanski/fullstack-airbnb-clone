@@ -36,6 +36,11 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
     rentModal.onOpen()
   }
 
+  const onLinkClick = (cb: () => void) => {
+    cb()
+    setIsOpen(false)
+  }
+
   return (
     <Styled.Wrapper>
       <Styled.Content>
@@ -56,23 +61,31 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
               <>
                 <MenuItem
                   label="My trips"
-                  onClick={() => router.push('/trips')}
+                  onClick={() => onLinkClick(() => router.push('/trips'))}
                 />
                 <MenuItem
                   label="My favorites"
-                  onClick={() => router.push('/favorites')}
+                  onClick={() => onLinkClick(() => router.push('/favorites'))}
                 />
                 <MenuItem
                   label="My reservations"
-                  onClick={() => router.push('/reservations')}
+                  onClick={() =>
+                    onLinkClick(() => router.push('/reservations'))
+                  }
                 />
                 <MenuItem
                   label="My properties"
-                  onClick={() => router.push('/properties')}
+                  onClick={() => onLinkClick(() => router.push('/properties'))}
                 />
-                <MenuItem label="Airbnb your home" onClick={rentModal.onOpen} />
+                <MenuItem
+                  label="Airbnb your home"
+                  onClick={() => onLinkClick(() => rentModal.onOpen())}
+                />
                 <hr />
-                <MenuItem label="Logout" onClick={() => signOut()} />
+                <MenuItem
+                  label="Logout"
+                  onClick={() => onLinkClick(() => signOut())}
+                />
               </>
             ) : (
               <>

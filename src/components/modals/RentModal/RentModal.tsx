@@ -86,12 +86,13 @@ const RentModal = () => {
       .post('/api/listings', data)
       .then(() => {
         toast.success('Listing created!')
-        router.push(asPath)
+        router.push(router.asPath)
         reset()
         setStep(STEPS.CATEGORY)
         rentModal.onClose()
       })
-      .catch(() => {
+      .catch(err => {
+        console.error(err)
         toast.error('Something went wrong.')
       })
       .finally(() => {

@@ -1,6 +1,7 @@
 import React from 'react'
 import { SafeUser } from '../../../types/typings'
 import Navbar from './Navbar/Navbar'
+import Footer from './Footer/Footer'
 import Providers from '../Providers/Providers'
 
 import * as Styled from './Layout.styles'
@@ -16,6 +17,7 @@ const Layout: React.FC<LayoutProps> = ({ children, currentUser }) => {
     <>
       <Navbar currentUser={currentUser} />
       <Styled.ContentWrapper>{children}</Styled.ContentWrapper>
+      <Footer />
       <Providers />
     </>
   )

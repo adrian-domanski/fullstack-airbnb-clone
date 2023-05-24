@@ -1,11 +1,11 @@
 import { BiSearch } from 'react-icons/bi'
-
-import * as Styled from './Search.styles'
 import useSearchModal from '../../../../hooks/useSearchModal'
 import { useSearchParams } from 'next/navigation'
 import useCountries from '../../../../hooks/useCountries'
 import { useMemo } from 'react'
 import { differenceInDays } from 'date-fns'
+
+import * as Styled from './Search.styles'
 
 const Search = () => {
   const searchModal = useSearchModal()
