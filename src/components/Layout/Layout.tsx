@@ -8,7 +8,6 @@ import * as Styled from './Layout.styles'
 
 interface LayoutProps {
   children: React.ReactNode
-  // Todo: Move this to zustand
   currentUser: SafeUser | null
 }
 
