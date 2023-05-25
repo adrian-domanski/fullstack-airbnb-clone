@@ -67,3 +67,7 @@ This project is licensed under the terms of the MIT license.
 ### [Live Demo] 🎉
 
 ## 👉 Open [booking.kodario.com](https://booking.kodario.com/) to view it in the browser.
+
+### Example credentials:
+**email**: example@gmail.com  
+**password**: 123456
