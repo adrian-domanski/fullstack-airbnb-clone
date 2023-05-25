@@ -19,7 +19,7 @@ The following technologies were used to build this project:
 - **Next.js**: A React framework for building server-side rendered and static websites.
 - **Prisma**: An open-source database toolkit for TypeScript and Node.js.
 - **NextAuth**: A complete authentication library for Next.js applications.
-- **React**: A JavaScript library for building user interfaces.
+- **Zustand**: State manager.
 - **Styled Components**: A CSS-in-JS library for styling React components.
 - **Leaflet**: An open-source JavaScript library for interactive maps.
 - **Cloudinary**: A cloud-based image and video management platform.
