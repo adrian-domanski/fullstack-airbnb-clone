@@ -39,11 +39,11 @@ To install and set up the project, follow these steps:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/airbnb-clone.git
+git clone https://github.com/adrian-domanski/fullstack-airbnb-clone.git
 ```
 2. Navigate to the project directory:
 ```bash
-cd airbnb-clone
+cd fullstack-airbnb-clone
 ```
 3. Install the dependencies:
 ```bash
